@@ -415,7 +415,6 @@ Edit files in `unpacked/word/`. See XML Reference below for patterns.
 
 **CRITICAL: Use smart quotes for new content.** When adding text with apostrophes or quotes, use XML entities to produce smart quotes:
 ```xml
-<!-- Use these entities for professional typography -->
 <w:t>Here&#x2019;s a quote: &#x201C;Hello&#x201D;</w:t>
 ```
 | Entity | Character |
@@ -479,9 +478,8 @@ Validates with auto-repair, condenses XML, and creates DOCX. Use `--validate fal
 
 **Inside `<w:del>`**: Use `<w:delText>` instead of `<w:t>`, and `<w:delInstrText>` instead of `<w:instrText>`.
 
-**Minimal edits** - only mark what changes:
+**Minimal edits** - only mark what changes (e.g. change "30 days" to "60 days"):
 ```xml
-<!-- Change "30 days" to "60 days" -->
 <w:r><w:t>The term is </w:t></w:r>
 <w:del w:id="1" w:author="Claude" w:date="...">
   <w:r><w:delText>30</w:delText></w:r>
@@ -496,7 +494,7 @@ Validates with auto-repair, condenses XML, and creates DOCX. Use `--validate fal
 ```xml
 <w:p>
   <w:pPr>
-    <w:numPr>...</w:numPr>  <!-- list numbering if present -->
+    <w:numPr>...</w:numPr>  <!-- list-numbering -->
     <w:rPr>
       <w:del w:id="1" w:author="Claude" w:date="2025-01-01T00:00:00Z"/>
     </w:rPr>
@@ -531,10 +529,9 @@ Without the `<w:del/>` in `<w:pPr><w:rPr>`, accepting changes leaves an empty pa
 
 After running `comment.py` (see Step 2), add markers to document.xml. For replies, use `--parent` flag and nest markers inside the parent's.
 
-**CRITICAL: `<w:commentRangeStart>` and `<w:commentRangeEnd>` are siblings of `<w:r>`, never inside `<w:r>`.**
+**CRITICAL: `<w:commentRangeStart>` and `<w:commentRangeEnd>` are siblings of `<w:r>`, never inside `<w:r>`. Comment markers must be direct children of `<w:p>`, never inside `<w:r>`.**
 
 ```xml
-<!-- Comment markers are direct children of w:p, never inside w:r -->
 <w:commentRangeStart w:id="0"/>
 <w:del w:id="1" w:author="Claude" w:date="2025-01-01T00:00:00Z">
   <w:r><w:delText>deleted</w:delText></w:r>
@@ -543,7 +540,6 @@ After running `comment.py` (see Step 2), add markers to document.xml. For replie
 <w:commentRangeEnd w:id="0"/>
 <w:r><w:rPr><w:rStyle w:val="CommentReference"/></w:rPr><w:commentReference w:id="0"/></w:r>
 
-<!-- Comment 0 with reply 1 nested inside -->
 <w:commentRangeStart w:id="0"/>
   <w:commentRangeStart w:id="1"/>
   <w:r><w:t>text</w:t></w:r>
@@ -564,11 +560,11 @@ After running `comment.py` (see Step 2), add markers to document.xml. For replie
 ```xml
 <Default Extension="png" ContentType="image/png"/>
 ```
-4. Reference in document.xml:
+4. Reference in document.xml (EMUs: 914400 = 1 inch):
 ```xml
 <w:drawing>
   <wp:inline>
-    <wp:extent cx="914400" cy="914400"/>  <!-- EMUs: 914400 = 1 inch -->
+    <wp:extent cx="914400" cy="914400"/>
     <a:graphic>
       <a:graphicData uri=".../picture">
         <pic:pic>

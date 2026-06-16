@@ -389,9 +389,9 @@ langsmith-fetch config set project "your-project-name"
 
 **Solution:**
 ```bash
-# Add to shell config file (~/.bashrc or ~/.zshrc)
-echo 'export LANGSMITH_API_KEY="your_key"' >> ~/.bashrc
-echo 'export LANGSMITH_PROJECT="your_project"' >> ~/.bashrc
+# Open ~/.bashrc or ~/.zshrc and add:
+# export LANGSMITH_API_KEY="your_key"
+# export LANGSMITH_PROJECT="your_project"
 
 # Reload shell config
 source ~/.bashrc

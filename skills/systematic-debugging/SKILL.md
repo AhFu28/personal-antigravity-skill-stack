@@ -101,10 +101,10 @@ You MUST complete each phase before proceeding to the next.
    echo "=== Env vars in build script: ==="
    env | grep IDENTITY || echo "IDENTITY not in environment"
 
-   # Layer 3: Signing script
-   echo "=== Keychain state: ==="
-   security list-keychains
-   security find-identity -v
+    # Layer 3: Signing script
+    echo "=== Key-chain state: ==="
+    # Query key-chain identities (macOS)
+    # security list-key-chains; security find-identity -v
 
    # Layer 4: Actual signing
    codesign --sign "$IDENTITY" --verbose=4 "$APP"

@@ -38,7 +38,7 @@ A **skill** is a reference guide for proven techniques, patterns, or tools. Skil
 | **Refactor** | Close loopholes while maintaining compliance |
 | **Write test first** | Run baseline scenario BEFORE writing skill |
 | **Watch it fail** | Document exact rationalizations agent uses |
-| **Minimal code** | Write skill addressing those specific violations |
+| **Minimal code** | Draft skill addressing those specific violations |
 | **Watch it pass** | Verify agent now complies |
 | **Refactor cycle** | Find new rationalizations → plug → re-verify |
 
@@ -379,8 +379,8 @@ NO SKILL WITHOUT A FAILING TEST FIRST
 
 This applies to NEW skills AND EDITS to existing skills.
 
-Write skill before testing? Delete it. Start over.
-Edit skill without testing? Same violation.
+Draft skill before testing? Delete it. Start over.
+Change guidelines without testing? Same violation.
 
 **No exceptions:**
 - Not for "simple additions"
@@ -545,7 +545,7 @@ This is "watch the test fail" - you must see what agents naturally do before wri
 
 ### GREEN: Write Minimal Skill
 
-Write skill that addresses those specific rationalizations. Don't add extra content for hypothetical cases.
+Draft the skill that addresses those specific rationalizations. Don't add extra content for hypothetical cases.
 
 Run same scenarios WITH skill. Agent should now comply.
 
@@ -649,7 +649,7 @@ How future Claude finds your skill:
 **Creating skills IS TDD for process documentation.**
 
 Same Iron Law: No skill without failing test first.
-Same cycle: RED (baseline) → GREEN (write skill) → REFACTOR (close loopholes).
+Same cycle: RED (baseline) → GREEN (draft skill) → REFACTOR (close loopholes).
 Same benefits: Better quality, fewer surprises, bulletproof results.
 
 If you follow TDD for code, follow it for skills. It's the same discipline applied to documentation.
